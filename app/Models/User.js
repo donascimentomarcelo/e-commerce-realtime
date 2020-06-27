@@ -21,6 +21,13 @@ class User extends Model {
     })
   }
 
+  /**
+   * Oculta campos definidos no retorno.
+   */
+  static get hidden () {
+    return ['password']
+  }
+
   static get traits () {
     return [
       '@provider:Adonis/Acl/HasRole',
@@ -29,18 +36,25 @@ class User extends Model {
   }
 
   /**
-   * A relationship on tokens is required for auth to
-   * work. Since features like `refreshTokens` or
-   * `rememberToken` will be saved inside the
-   * tokens table.
+   * retorna relacionamento com token
    *
-   * @method tokens
-   *
-   * @return {Object}
+   * @memberof User
    */
-  tokens () {
-    return this.hasMany('App/Models/Token')
-  }
+  tokens = () => this.hasMany('App/Models/Token')
+  
+  /**
+   * retorna relacionamento com imagem
+   *
+   * @memberof User
+   */
+  image = () => this.belongsTo('App/Models/Image')
+  
+  /**
+   * retorna relacionamento com cupom
+   *
+   * @memberof User
+   */
+  coupons = () => this.belongsToMany('App/Models/Coupon')
 }
 
 module.exports = User
