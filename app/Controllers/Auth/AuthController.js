@@ -34,6 +34,11 @@ class AuthController {
 
     async login({ req, res, auth }) {
 
+        const { email, password } = req.all();
+
+        const data = await auth.withRefreshToken().attempt(email, password);
+
+        return res.send({ data });
     }
 
     async refresh({ req, res, auth }) {
