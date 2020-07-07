@@ -4,25 +4,25 @@
 const Route = use('Route');
 
 Route.group(() => {
-    Route.post('/register', 'AuthController.register')
+    Route.post('register', 'AuthController.register')
         .as('auth.register');
 
-    Route.post('/login', 'AuthController.login')
+    Route.post('login', 'AuthController.login')
         .as('auth.login');
 
-    Route.post('/refresh', 'AuthController.refresh')
+    Route.post('refresh', 'AuthController.refresh')
         .as('auth.refresh');
 
-    Route.post('/logout', 'AuthController.logout')
+    Route.post('logout', 'AuthController.logout')
         .as('auth.logout');
 
-    Route.post('/reset-password', 'AuthController.forgot')
+    Route.post('reset-password', 'AuthController.forgot')
         .as('auth.forgot');
 
-    Route.get('/reset-password', 'AuthController.remember')
+    Route.get('reset-password', 'AuthController.remember')
         .as('auth.remember');
 
-    Route.put('/reset-password', 'AuthController.reset')
+    Route.put('reset-password', 'AuthController.reset')
         .as('auth.reset');
 
 })
